@@ -1,0 +1,2 @@
+# Quarantine
+The patient can follow his health condition by recording the temperature and the percentage of oxygen and showing the results immediately. He can buy a medical device to measure the temperature and the percentage of oxygen. The devices are classified according to the price. He can write notes on his health condition. There is a page for the admin controlling the system and adding a doctor or modifying the data of a doctor or nursing Or a patient or wipe devices from the system, all of these operations can be done by the admin
