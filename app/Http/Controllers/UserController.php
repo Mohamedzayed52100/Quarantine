@@ -56,7 +56,7 @@ class UserController extends Controller
             $p = $res[0];
             session()->regenerate();
             session(['logined' => true, 'pationid' => $p->id, 'pationname' => $p->name, 'pation' => $p]);
-            //     session([]);
+            //   session([]);
             //     session([]);
             //     session([]);
             //    // return "your data is corretc";
