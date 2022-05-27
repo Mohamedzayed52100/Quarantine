@@ -2,6 +2,11 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Admain;
+use App\Http\Middleware\AdmainChech;
+use App\Http\Middleware\PreventBackHistory;
+use App\Http\Middleware\User;
+use App\Http\Middleware\UserCheck;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -14,6 +19,7 @@ class Kernel extends HttpKernel
      * @var array<int, class-string|string>
      */
     protected $middleware = [
+        PreventBackHistory::class,
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
         \Illuminate\Http\Middleware\HandleCors::class,
@@ -63,5 +69,11 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'myuser'=>User::class,
+        'myusercheck'=>UserCheck::class,
+        'myadmain'=>Admain::class,
+        'myadmaincheck'=>AdmainChech::class,
+
+
     ];
 }

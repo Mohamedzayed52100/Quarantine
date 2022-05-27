@@ -68,19 +68,37 @@
         }
 
         .black {
-            background-color: #2c3e50;
+            background-color: #2c3e50 ;
+        }
+
+
+        .gehad{
+            margin:   40px ;
+            font-size: 20px;
+            background-color:#784cfb;
+            color:#fff;
+            padding: 5px;
+            border-radius: 10px;
+
+
+        }
+        .gehad:hover{
+                        text-decoration: none;
+
         }
 
     </style>
 </head>
 
 <body>
+
+    <a class="gehad" href="/logout">logout</a>
     {{-- clock --}}
     <div style="position: fixed; top: 15px; right:15px;" class="btn btn-secondary" id="div"></div>
     {{-- paragrah in 500 ms --}}
-    <p style="    font-size: 20px;
-    text-align: center" id="type"></p>
-
+    {{-- <p style="    font-size: 20px ;
+    text-align: center" id="type"></p> --}}
+<p style="text-align: center; font-size:20px;">This is admain page you can do any operation in database</p>
 
 
     <div class="container">
@@ -92,7 +110,7 @@
         </ul>
         <a class="btn btn-primary" href="/alldoctor">Doctors</a>
         <a class="btn btn-secondary" href="/allnurse">Nurses</a>
-        <a class="btn btn-dark" href="/allpation">Pations</a>
+        <a class="btn btn-dark" href="/allpation">patients</a>
         <a class="btn btn-danger" href="/all_devices">Devices</a>
         <a class="btn btn-warning" href="/payment">payment</a>
         <a class="btn btn-success" href="/note">note</a>

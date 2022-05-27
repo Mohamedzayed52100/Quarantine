@@ -33,6 +33,12 @@
             width:100px;
             margin-left:60px
         }
+        body{
+             /* background-image: url('newin.jpg');
+            background-size: cover; */
+            background: #d1e4c8;
+
+        }
 
     </style>
 </head>
@@ -43,14 +49,13 @@
         All device
 
             <a style="" class="btn btn-dark" href="/buy" > All </a>
-            <a class="btn btn-primary" href="/by_kind/1" >Kind 1</a>
-            <a href="/by_kind/2"class="btn btn-success" >Kind 2</a>
-            <a href="/by_kind/3" class="btn btn-info">Kind 3</a>
-   
+            <a class="btn btn-primary" href="/by_kind/1" >Class 1</a>
+            <a href="/by_kind/2"class="btn btn-success" >Class 2</a>
+            <a href="/by_kind/3" class="btn btn-info">Class 3</a>
     </div>
     <div class="container overflow-hidden">
     <div class="row gy-5">
-      
+
         @foreach ($device as $key => $device)
           <div  style="margin: 10px 0"  class="col-3">
             <img  style="width:250px; height: 250px;" src="{{ asset('devices') }}/{{ $device->image }}" class="card-img-top" alt="...">

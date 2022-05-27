@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use ZipArchive;
-use File;
+//use File;
+use Illuminate\Support\Facades\File  ;
 
 class ZipController extends Controller
 {
@@ -13,6 +14,8 @@ class ZipController extends Controller
         $fileName= 'myzip.zip';
         if($zip->open(public_path($fileName),ZipArchive::CREATE) === TRUE)
         {
+
+
             $files = File::files(public_path('image'));
             foreach($files as $key => $value){
                 $relativeNameInZipFile = basename($value);

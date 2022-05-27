@@ -12,7 +12,14 @@ class PationController extends Controller
 
     public function index()
     {
-        return view('test');
+
+
+
+    $doc=DB::select('select doc_id from pation');
+
+
+
+        return view('test' , compact('doc'));
     }
     // public function addpation(){
     //     return view('buy');
@@ -23,6 +30,8 @@ class PationController extends Controller
         $email = $request->email;
         $mri = $request->mri;
         $phone = $request->phone;
+        $select = $request->select;
+        //select
         $diagnosis = $request->diagnosis;
         $image = $request->file('file');
         $imageName = time() . '.' . $image->extension();
@@ -32,6 +41,8 @@ class PationController extends Controller
         $pation->email = $email;
         $pation->mri = $mri;
         $pation->phone = $phone;
+        $pation->doc_id = $select;
+
         $pation->diagnosis = $diagnosis;
         $pation->pat_image = $imageName;
         $pation->save();
@@ -91,10 +102,12 @@ class PationController extends Controller
         // return $request->id;
     }
     public function se(Request $request){
+
         $pation = DB::table('pation')->where('name', $request->name)->first();
         // $name = $request->name;
         // $id =Pation::all();
-        return $pation;
+        return view('searchedpation', compact('pation'));
+        //return $pation;
     }
 
 }

@@ -6,31 +6,94 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Record  </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<style>
+    /* .a{
+        margin-top:100px;
+
+
+    } */
+    body{
+        background-image: url('asd.jpg');
+        background-size: cover;
+
+    }
+</style>
 </head>
 <body>
-  <div class="container">
+  <div  class="container a">
     <div class="row">
         <div class="col-md-6 offset-md-3">
         <div class="card">
         <div class="card-header">
             record readings</div>
         <div class="card-body">
+{{-- <p> your id :  {{session('user')->id}}</p> --}}
 
-            <form action="/recordinfo" method="POST" enctype="multipart/form-data">
+@php
+$value =session('user')->mri;
+@endphp
+
+@if (Session::has('invaild_reange'))
+<p style="color:red;">{{Session::get('invaild_reange')}}</p>
+
+@endif
+            <form   action="/recordinfo" method="POST" enctype="multipart/form-data">
                 @csrf
-             {{-- </div> --}}
-            {{-- {{asset('image')}}/{{$d->profileimage   }} --}}
+
                 <div class="form-group">
-                   <label for="title">MRI </label>
-                  <input type="number"  name="mri" value="" class="form-control">
+                   <label for="title">Name </label>
+                  <input  type="hidden"  value="{{$value}}"  readolny name="mri" readonly class="form-control">
+                  <input  type="text"  value="{{session('user')->name}}"  readolny name="nameed" readonly class="form-control">
+
+
                 </div>
                 <div class="form-group">
                      <label for="temperature">temperature</label>
-                    <input type="text"  name="temperature"   class="form-control">
+                    <input type="text"  name="temperature" value="{{old("temperature")}}" maxlength="2"  class="form-control">
+                    @error('temperature')
+                    <span>{{$message}}</span>
+
+                    @enderror
                   </div>
                 <div class="form-group">
                      <label for="oxygen">Oxygen Level</label>
-                    <input type="text"  name="oxygen"   class="form-control">
+                    <input type="text"  name="oxygen"  maxlength="3" value="{{old("oxygen")}}"  class="form-control">
+                    @error('oxygen')
+                    <span>{{$message}}</span>
+
+                    @enderror
+                  </div>
+                <div class="form-group">
+                     <label for="oxygen">respiratory Level</label>
+                    <input type="text"  name="respiratory"  maxlength="3" value="{{old("respiratory")}}"  class="form-control">
+                    @error('respiratory')
+                    <span>{{$message}}</span>
+
+                    @enderror
+                  </div>
+                <div class="form-group">
+                     <label for="oxygen">pluse indicator Level</label>
+                    <input type="text"  name="pluse_indicator"  maxlength="3" value="{{old("pluse_indicator")}}"  class="form-control">
+                    @error('pluse_indicator')
+                    <span>{{$message}}</span>
+
+                    @enderror
+                  </div>
+                <div class="form-group">
+                     <label for="blood_pressure	">blood pressure Level</label>
+                    <input type="text"  name="blood_pressure"  maxlength="3" value="{{old("blood_pressure")}}"  class="form-control">
+                    @error('blood_pressure')
+                    <span>{{$message}}</span>
+
+                    @enderror
+                  </div>
+                <div class="form-group">
+                     <label for="blood_glucose_level">blood glucose level </label>
+                    <input type="text"  name="blood_glucose_level"  maxlength="3" value="{{old("blood_glucose_level")}}"  class="form-control">
+                    @error('blood_glucose_level')
+                    <span>{{$message}}</span>
+
+                    @enderror
                   </div>
                 <div class="form-group">
                   {{-- <label for="title">Choose profil Image</label> --}}
@@ -39,21 +102,36 @@
                 <button type="submit" class="btn btn-success">Check</button>
                 <a href="/notes" class="btn btn-success">Notes</a>
                 @if (Session::has('state'))
-                <p>{{Session::get('state')}}</p>
+                <p style="color: red;">{{Session::get('state')}}</p>
+
+                <p>{{ session('doc_alaa')->name }}</p>
+<p>{{ session('doc_alaa')->phone }}</p>
+ <img  style="width:250px; height: 250px;" src="{{ asset('image') }}/{{  session('doc_alaa')->doc_image  }}" class="card-img-top" alt="...">
+                @endif
+
+
+                @if (Session::has('submit'))
+                <p style="color: red;">{{Session::get('submit')}}</p>
+                <img style="width: 160px; height: 160px" src="a1.jpg">
+                <img style="width: 160px; height: 160px" src="a2.jpg">
+                <img style="width: 160px; height: 160px" src="a3.jpg">
 
                 @endif
+
+
+                {{-- <h1>{{$merchant}}</h1> --}}
               </form>
 
         @if (Session::has('notes'))
         <form action="/recordnote" method="post" style="margin-top: 30px ">
             @csrf
-    
+
             <textarea id="text" name="message" rows="8" cols="65" placeholder="enter text" maxlength="250"></textarea>
-    
+
             <span style="position: relative; left: 480px" id="count">250</span>
             <input class="btn btn-success" type="submit" value="submit">
         </form>
-            
+
         @endif
 
     </div>

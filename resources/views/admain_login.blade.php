@@ -161,6 +161,14 @@
     </style>
 
     <link rel="stylesheet" href="css/login.css">
+
+
+    <style>
+        body{
+            background-image: url('alaa.jpg');
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -172,7 +180,7 @@
                         Log in
                     </div>
                     <div class="card-body">
-                        <form action="/admainloginsubmit" method="POST" id="register">
+                        <form action="/admain_login" method="POST" id="register">
                             @csrf
 
                             {{-- <div class="form-group">
@@ -185,22 +193,13 @@
                                 <input type="password" name="password" id="password" class="form-control"
                                     data-parsley-length="[6,12]" required data-parsley-trigger="keyup">
                             </div>
-                            {{-- <div class="form-group">
-                                <label for="body">Confirm Password</label>
-                                <input type="password" name="cpassword" id="cpassword" class="form-control"
-                                    data-parsley-equalto="#password" required data-parsley-trigger="keyup">
-                            </div> --}}
-                            {{-- <div class="form-group">
-                                <label for="body">Phone</label>
-                                <input type="text" name="Phone" id="Phone" class="form-control"
-                                    data-parsley-pattern="[0-9]+$" data-parsley-length="[10,11]" required
-                                    data-parsley-trigger="keyup">
-                            </div> --}}
+
                             <button type="submit" class="btn btn-success">Submit</button>
                             @if (Session::has('error'))
                             <p style="color:red;">{{Session::get('error')}}</p>
-
                             @endif
+                            <p style="color: red;">{{session('mess')}}</p>
+                            <p style="color: red;">{{session('message')}}</p>
                         </form>
                     </div>
                 </div>

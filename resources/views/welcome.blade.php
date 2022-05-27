@@ -160,7 +160,16 @@
 
     </style>
 
+
     <link rel="stylesheet" href="css/login.css">
+
+
+    <style>
+        body{
+            background-image: url('alaa.jpg');
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -172,7 +181,7 @@
                         Log in
                     </div>
                     <div class="card-body">
-                        <form action="/profile" method="POST" id="register">
+                        <form action="/user_login_submiti" method="POST" id="register">
                             @csrf
 
                             {{-- <div class="form-group">
@@ -181,15 +190,18 @@
                                     data-parsley-type="email" required data-parsley-trigger="keyup">
                             </div> --}}
                             <div class="form-group">
-                                <label for="body">MRI</label>
+                                <label for="body">MRN</label>
                                 <input type="password" name="mri" id="password" class="form-control"
-                                    data-parsley-length="[6,12]" required data-parsley-trigger="keyup">
+                                    data-parsley-length="[6,12]" required data-parsley-trigger="keyup" maxlength="12">
                             </div>
+                            <p style="color: red;">{{session('mess')}}</p>
+                            <p style="color: red;">{{session('message')}}</p>
+
                             @if (Session::has('invaild'))
                             <p style="color:red">{{Session::get('invaild')}}</p>
-                                
+
                             @endif
-                   
+
                             <button type="submit" class="btn btn-success">Submit</button>
                             <a href="/admain_login" class="btn btn-success">Admain</a>
                         </form>

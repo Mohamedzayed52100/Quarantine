@@ -45,10 +45,21 @@
                   <input type="text"  name="diagnosis" class="form-control">
                 </div>
                 <div class="form-group">
+                    <label for="title">Choose Doctor</label>
+                    {{-- <input type="file"  name="file" class="form-control"  onchange="previewFile(this)"> --}}
+                    <select name="select">
+                        @foreach ($doc as $f=> $d)
+                        <option value="{{ $d->doc_id}}">{{$d->doc_id}}</option>
+
+                        @endforeach
+                    </select>
+                   </div>
+                <div class="form-group">
                   <label for="title">Choose profil Image</label>
                   <input type="file"  name="file" class="form-control"  onchange="previewFile(this)">
                   <img id="previewImg" style="max-width: 130px;margin-top: 20px" alt="profil Image">
                 </div>
+
                 <button type="submit" class="btn btn-success">Submit</button>
                 <a href="/allpation" class="btn btn-success">All Pation</a>
               </form>

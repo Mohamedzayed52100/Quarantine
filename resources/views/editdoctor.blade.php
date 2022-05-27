@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>add Student</title>
+    <title>add Doctor</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
@@ -33,7 +33,7 @@
                      <label for="title">Phone </label>
                     <input type="text"  name="phone" value="{{  $d->phone  }}" class="form-control">
                   </div>
-                <div class="form-group">
+                <div class="form-groupz">
                      <label for="details">details </label>
                     <input type="text"  name="details" value="{{  $d->details  }}" class="form-control">
                   </div>

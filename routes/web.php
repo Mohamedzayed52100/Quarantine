@@ -39,6 +39,7 @@ use  App\Http\Controllers\UserController;
 //     return view('show_one_device');
 // });
 
+Route::group(['middleware'=>'myadmain'], function(){
 
 
 Route::get('/test', [PationController::class, 'index']);
@@ -86,19 +87,57 @@ Route::get('/payment', [PaymentController::class, 'all_payments']);
 Route::get('/note', [NotesController::class, 'all_notes']);
 Route::get('/zipFile', [ZipController::class , 'zipFile'])->name('zipFile');
 //--------------------------login------------------
+Route::get('/admain_go',[AdmainController::class, 'admain_go']);
+Route::get('/logout',[AdmainController::class, 'logout']);
 
-Route::get('/', function(){
-    return view('welcome');
 });
-Route::get('admain_login',[AdmainController::class, 'admainlogin']);
-Route::post('admainloginsubmit',[AdmainController::class, 'admainloginsubmit']);
-//----------------------------------user-----------
-Route::post('/profile', [UserController::class,'profile']);
-Route::get('/buy', [UserController::class,'buy_device']);
-Route::get('/record', [UserController::class,'record']);
-Route::get('/notes', [UserController::class,'notes']);
-Route::get('/buy_one_device/{id}', [UserController::class,'one_device']);
-Route::post('/buydevice', [UserController::class,'buydevice']);
-Route::post('/recordinfo', [UserController::class,'recordinfo']);
-Route::post('/recordnote', [UserController::class,'recordnote']);
+Route::group(['middleware'=>'myadmaincheck'], function(){
 
+    Route::get('admain_login',[AdmainController::class, 'admainlogin']);
+    Route::post('admain_login',[AdmainController::class, 'admainloginsubmit']);
+});
+
+
+
+// Route::get('admain_login',[AdmainController::class, 'admainlogin']);
+// Route::post('admainloginsubmit',[AdmainController::class, 'admainloginsubmit']);
+
+//----------------------------------user-----------
+
+
+
+// Route::get('/joo', function(){
+//     $name =request('name');
+//     return $name;
+
+// });
+
+
+
+Route::group(['middleware'=>'myusercheck'], function(){
+
+    Route::get('/', function(){
+        return view('welcome');
+
+    });
+
+    Route::post('/user_login_submiti', [UserController::class,'user_login_submiti']);
+
+});
+
+
+
+
+Route::group(['middleware'=>'myuser'], function(){
+    Route::get('/profile', [UserController::class,'profile']);
+    Route::get('/buy', [UserController::class,'buy_device']);
+    Route::get('/record', [UserController::class,'record']);
+    Route::get('/notes', [UserController::class,'notes']);
+    Route::get('/buy_one_device/{id}', [UserController::class,'one_device']);
+    Route::post('/buydevice', [UserController::class,'buydevice']);
+    Route::post('/recordinfo', [UserController::class,'recordinfo']);
+    Route::post('/recordnote', [UserController::class,'recordnote']);
+    Route::get('/logout',[UserController::class, 'logout' ]);
+
+
+    });

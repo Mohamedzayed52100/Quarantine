@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Buy device</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
     <style>
         body{
             background-color: #eee;
@@ -12,19 +14,33 @@
         .container{
             width :1200px;
             margin: 0 auto;
+            margin-top:100px;
         }
         p{
             text-align: justify;
             font-size:19px;
         }
+        img{
+            position: absolute;
+            top: 30px;
+            right: 250px;
+            width:300px; height: 300px;
+            //border:  10px solid black;
+            /* border-radius:50% ; */
+
+        }
+        body{
+            /* background-image: url('newin.jpg');
+            background-size: cover; */
+            background: #d1e4c8;
+        }
     </style>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 </head>
 <body>
 
 <div class="container">
-    <img  style="width:300px; height: 300px;" src="{{ asset('devices') }}/{{ $d->image }}" class="card-img-top" alt="...">
+    <img  style="" src="{{ asset('devices') }}/{{ $d->image }}"  alt="...">
     <h2>name : {{$d->name}}</h2>
     <h3>details : {{$d->details}}</h3>
     <h3>id : {{$d->id}}</h3>
@@ -36,7 +52,8 @@
 
  <form action="/buydevice" method="POST" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="id" value="{{$d->id}}">
+
+    <input type="hidden" name="idd" value="{{$d->id}}">
     <div class="form-group">
        <label for="title">Name </label>
       <input type="text"  name="name"  class="form-control">

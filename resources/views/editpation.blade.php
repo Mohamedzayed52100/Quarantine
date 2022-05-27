@@ -29,7 +29,7 @@
               <input type="email"  name="email"  value="{{  $pation->email  }}"class="form-control">
             </div>
             <div class="form-group">
-              <label for="mri">MRI </label>
+              <label for="mri">MRN </label>
               <input type="number"  name="mri" value="{{  $pation->mri  }}" class="form-control">
             </div>
             <div class="form-group">

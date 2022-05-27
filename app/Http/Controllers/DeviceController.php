@@ -92,7 +92,13 @@ class DeviceController extends Controller
 
         // $name = $request->name;
         // $id =Pation::all();
-        return $device;
+
+        // device searchedpation.blade
+       // return $device;
+        return view('devicesearched', compact('device'));
+
+        //return view('searchedpation', compact('device'));
+
     }
     public function by_kind($kind){
         $device =DB::table('device')->where('kind', $kind)->get();
